@@ -1,21 +1,20 @@
-import { Starring } from './starring.type';
+import { userType } from './user.type';
 
 export type Film = {
-  id: number;
   name: string;
+  description: string;
+  releasedDate : number;
+  publicationDate: Date;
+  genre: string;
+  rating: number;
+  previewVideoLink: string;
+  videoLink: string;
+  director: string;
+  starrings: string[];
+  runTime: number;
+  scoresCounts: number;
+  user: userType;
   posterImage: string;
-  previewImage: string;
   backgroundImage: string;
   backgroundColor: string;
-  videoLink: string;
-  previewVideoLink: string;
-  description: string;
-  rating: number;
-  scoresCount: number;
-  director: string;
-  starring: Starring[];
-  runTime: number;
-  genre: string;
-  released: number;
-  isFavorite: boolean;
 }

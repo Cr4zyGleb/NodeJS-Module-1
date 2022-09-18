@@ -1,0 +1,142 @@
+{
+  "api" : {
+    "names" : [
+      "Avatar",
+      "Aviator",
+      "bg-the-grand-budapest-hotel",
+      "bohemian-rhapsody",
+      "dardjeeling-limited"
+    ],
+    "descriptions" : [
+      "Avatar",
+      "Aviator descr",
+      "bg-the-grand-budapest-hotel descr",
+      "bohemian-rhapsody descr",
+      "dardjeeling-limited descr"
+    ],
+    "releasedDates" : [
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021"
+    ],
+    "publicationDates" : [
+      "2017-01-11T10:00:00.333Z",
+      "2018-01-11T10:00:00.333Z",
+      "2019-01-11T10:00:00.333Z",
+      "2020-01-11T10:00:00.333Z",
+      "2021-01-11T10:00:00.333Z"
+    ],
+    "genres" : [
+      "Comedy",
+      "Drama",
+      "Crime",
+      "Adventure",
+      "Thriller"
+    ],
+    "ratings" : [
+      "2.2",
+      "4.4",
+      "6.6",
+      "8.8",
+      "10"
+    ],
+    "previewVideoLinks" : [
+      "https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4",
+      "https://10.react.pages.academy/static/film/video/dog.mp4",
+      "https://10.react.pages.academy/static/film/video/traffic.mp4",
+      "https://10.react.pages.academy/static/film/video/dog.mp4",
+      "https://10.react.pages.academy/static/film/video/traffic.mp4"
+    ],
+    "videoLinks" : [
+      "https://10.react.pages.academy/static/film/video/matrix.mp4",
+      "https://10.react.pages.academy/static/film/video/bubbles.mp4",
+      "https://10.react.pages.academy/static/film/video/matrix.mp4",
+      "https://10.react.pages.academy/static/film/video/bubbles.mp4",
+      "https://10.react.pages.academy/static/film/video/matrix.mp4"
+    ],
+    "starrings" : [
+      "Jason Statham",
+      "Brad Pitt",
+      "Benicio Del Toro",
+      "Rowan Atkinson",
+      "John Malkovich",
+      "Natalie Imbruglia"
+    ],
+    "directors" : [
+      "Peter Howitt",
+      "Jemaine Clement",
+      "Guy Ritchie",
+      "Martin Scorsese",
+      "Quentin Tarantino"
+    ],
+    "runTimes" : [
+      "100",
+      "120",
+      "140",
+      "160",
+      "180"
+    ],
+    "scoresCounts" : [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "users" : [
+      {
+        "userName" : "User1",
+        "email" : "User1@gamil.com",
+        "avatar" : "User1.jpg",
+        "password" : "User111"
+      },
+      {
+        "userName" : "User2",
+        "email" : "User2@gamil.com",
+        "avatar" : "User2.jpg",
+        "password" : "User222"
+      },
+      {
+        "userName" : "User3",
+        "email" : "User3@gamil.com",
+        "avatar" : "User3.jpg",
+        "password" : "User333"
+      },
+      {
+        "userName" : "User4",
+        "email" : "User4@gamil.com",
+        "avatar" : "User4.jpg",
+        "password" : "User444"
+      },
+      {
+        "userName" : "User5",
+        "email" : "User5@gamil.com",
+        "avatar" : "User5.jpg",
+        "password" : "User555"
+      }
+    ],
+    "posterImages" : [
+      "https://10.react.pages.academy/static/film/poster/Aviator1.jpg",
+      "https://10.react.pages.academy/static/film/poster/Aviator2.jpg",
+      "https://10.react.pages.academy/static/film/poster/Aviator3.jpg",
+      "https://10.react.pages.academy/static/film/poster/Aviator4.jpg",
+      "https://10.react.pages.academy/static/film/poster/Aviator5.jpg"
+    ],
+    "backgroundImages" : [
+      "https://10.react.pages.academy/static/film/background/matrix1.jpg",
+      "https://10.react.pages.academy/static/film/background/matrix2.jpg",
+      "https://10.react.pages.academy/static/film/background/matrix3.jpg",
+      "https://10.react.pages.academy/static/film/background/matrix4.jpg",
+      "https://10.react.pages.academy/static/film/background/matrix5.jpg"
+    ],
+    "backgroundColors" : [
+      "#FDFDFC",
+      "#D6CDAF",
+      "#977461",
+      "#828585",
+      "#92918B"
+    ]
+  }
+}
