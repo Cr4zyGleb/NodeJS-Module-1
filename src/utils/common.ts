@@ -2,8 +2,26 @@ import { Film } from '../types/film.type';
 
 export const createFilm = (row: string) => {
   const tokens = row.replace('\n', '').split('\t');
-  const [name, description, releasedDate, publicationDate, genre, rating, previewVideoLink, videoLink, director, starrings,
-    runTime, scoresCounts, userName, email, avatar, password, posterImage, backgroundImage, backgroundColor] = tokens;
+  const [
+    name,
+    description,
+    releasedDate,
+    publicationDate,
+    genre,
+    rating,
+    previewVideoLink,
+    videoLink,
+    director,
+    starrings,
+    runTime,
+    scoresCounts,
+    userName,
+    email,
+    avatar,
+    password,
+    posterImage,
+    backgroundImage,
+    backgroundColor] = tokens;
   return {
     name,
     description,
@@ -14,7 +32,7 @@ export const createFilm = (row: string) => {
     previewVideoLink,
     videoLink,
     director,
-    starrings : starrings.split(';').map((elem) => elem),
+    starrings: starrings.split(';').map((elem) => elem),
     runTime: Number.parseInt(runTime, 10),
     scoresCounts: Number.parseInt(scoresCounts, 10),
     user: { userName, email, avatar, password },
