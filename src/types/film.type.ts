@@ -1,11 +1,12 @@
-import { userType } from './user.type';
+import { GenreType } from './genre-type.enum';
+import { User } from './user.type';
 
 export type Film = {
-  name: string;
+  title: string;
   description: string;
-  releasedDate : number;
+  releasedDate : Date;
   publicationDate: Date;
-  genre: string;
+  genre: GenreType;
   rating: number;
   previewVideoLink: string;
   videoLink: string;
@@ -13,7 +14,7 @@ export type Film = {
   starrings: string[];
   runTime: number;
   scoresCounts: number;
-  user: userType;
+  user: User;
   posterImage: string;
   backgroundImage: string;
   backgroundColor: string;
