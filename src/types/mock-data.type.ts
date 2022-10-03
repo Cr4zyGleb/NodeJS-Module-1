@@ -1,4 +1,4 @@
-import { userType } from './user.type';
+import { User } from './user.type';
 
 export type MockData = {
   names: string[];
@@ -13,7 +13,7 @@ export type MockData = {
   directors: string[];
   runTimes: string[];
   scoresCounts: string[];
-  users: userType[];
+  users: User[];
   posterImages: string[];
   backgroundImages: string[];
   backgroundColors: string[];

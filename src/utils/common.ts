@@ -1,9 +1,11 @@
+import crypto from 'crypto';
+
 import { Film } from '../types/film.type';
 
 export const createFilm = (row: string) => {
   const tokens = row.replace('\n', '').split('\t');
   const [
-    name,
+    title,
     description,
     releasedDate,
     publicationDate,
@@ -23,9 +25,9 @@ export const createFilm = (row: string) => {
     backgroundImage,
     backgroundColor] = tokens;
   return {
-    name,
+    title,
     description,
-    releasedDate: Number.parseInt(releasedDate, 10),
+    releasedDate: new Date(releasedDate),
     publicationDate: new Date(publicationDate),
     genre,
     rating: Number.parseInt(rating, 10),
@@ -45,3 +47,9 @@ export const createFilm = (row: string) => {
 
 export const getErrorMessage = (error: unknown): string =>
   error instanceof Error ? error.message : '';
+
+
+export const createSHA256 = (line: string, salt: string): string => {
+  const shaHasher = crypto.createHmac('sha256', salt);
+  return shaHasher.update(line).digest('hex');
+};

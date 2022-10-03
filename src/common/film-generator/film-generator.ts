@@ -1,5 +1,5 @@
 import { MockData } from '../../types/mock-data.type.js';
-import { userType } from '../../types/user.type.js';
+import { User } from '../../types/user.type.js';
 import { getRandomItem, getRandomItems } from '../../utils/random.js';
 import { FilmGeneratorInterface } from './film-generator.interface.js';
 
@@ -19,7 +19,7 @@ export default class FilmGenerator implements FilmGeneratorInterface {
     const starrings = getRandomItems<string>(this.mockData.starrings);
     const runTime = getRandomItem<string>(this.mockData.runTimes);
     const scoresCounts = getRandomItem<string>(this.mockData.scoresCounts);
-    const {userName, email, avatar, password} = getRandomItem<userType>(this.mockData.users);
+    const {userName, email, avatar, password} = getRandomItem<User>(this.mockData.users);
     const posterImage = getRandomItem<string>(this.mockData.posterImages);
     const backgroundImage = getRandomItem<string>(this.mockData.backgroundImages);
     const backgroundColor = getRandomItem<string>(this.mockData.backgroundColors);
