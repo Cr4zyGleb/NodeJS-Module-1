@@ -5,5 +5,6 @@ export const Component = {
   DatabaseInterface: Symbol.for('DatabaseInterface'),
   UserServiceInterface: Symbol.for('UserServiceInterface'),
   UserModel: Symbol.for('UserModel'),
-  FilmModel: Symbol.for('FilmModel')
+  FilmModel: Symbol.for('FilmModel'),
+  CommentModel: Symbol.for('CommentModel'),
 } as const;
