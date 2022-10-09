@@ -1,0 +1,240 @@
+openapi: 3.1.0
+info:
+  title: API сервер для демо-проекта «Что посмотреть».
+  description: |-
+    * Список ресурсов и маршрутов сервера «Что посмотреть».
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 2.0.0
+tags:
+  - name: films
+    description: Действия с фильмами.
+  - name: comments
+    description: Действия с комментариями.
+  - name: users
+    description: Действия с пользователем.
+paths:
+  /users/register:
+    post:
+      tags:
+        - users
+      summary: Регистрация пользователя
+      description: Регистрирует нового пользователя.
+
+      requestBody:
+        description: Информация для создания нового пользователя.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createUser'
+        required: true
+
+      responses:
+        "201":
+          description: Пользователь зарегистрирован. Объект пользователя.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+        "409":
+          description: Пользователь с таким email уже существует.
+
+  /promo:
+
+    get:
+      tags:
+        - promo
+      summary: Получение промо фильма.
+      description: Получение промо фильма.
+
+    responses:
+      "201":
+        description: Промо фильм получен.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/film'  
+      
+  /favorite:
+    get:
+        tags:
+          - favorite
+        summary: Получает список фильмов к просмотру.
+        description: Возвращает массив фильмов, добавленных в список «к просмотру».
+
+  /favorite/{filmId}/{status}: 
+    put:
+        tags:
+          - favorite
+        summary: Меняет состояние фильма в списке "к просмотру"
+        description: Добавляет в список "к просмотру" или удаляет из него. 
+                      То есть меняет значение реквизита isFavorite (boolean)
+  
+  /films:
+    post:
+      tags:
+        - films
+      summary: Создание фильма
+      description: Создаёт фильм на основании переданных данных
+    get:
+      tags:
+        - films
+      summary: Получение фильмов
+      description: Получение всех фильмов
+
+  /films/{jenre}:
+    get:
+      tags:
+        - films
+      summary: Получение фильмов по жанру.
+      description: Получение фильмов по жанру.
+
+  /films/{filmId}:
+    get: 
+      tags: 
+        - films
+      summary: Получает фильм по id
+      description: Получает фильм по id
+
+    patch:
+      tags:
+        - films
+      summary: Обновляет фильм по id
+      description: Обновляет фильм по id. Необходимо передать полную структуру реквизитов.
+  
+    delete:
+      tags:
+        - films
+      summary: Удаляет фильм по id
+      description: Удаляет фильм по id. Также удаляются связанные комментарии.
+
+  /comments/{filmId}: 
+    get:
+      tags:
+        - comments
+      summary: Получение комментариев фильма
+      description: Получение комментариев фильма
+    post:
+      tags:
+        - comments
+      summary: Создание комментария фильма
+      description: Создание комментария фильма
+       
+  /users/login:
+    post:
+      tags:
+        - users
+      summary: Авторизация пользователя
+      description: Авторизует пользователя на основе логина и пароля
+    get:
+      tags:
+        - users
+      summary: Проверка состояния пользователя
+      description: Возвращает информацию по авторизованному пользователю
+
+  /users/{userId}/avatar:
+    post:
+      tags:
+        - users
+      summary: Загрузить изображение аватара
+      description: Загружает изображение аватара пользователя. Изображение
+        аватара должно быть в формате `png` или `jpg`.
+
+components:
+  schemas:
+    createUser:
+
+      properties:
+        email:
+          type: string
+          example: Test@Test.ru
+
+        userName:
+          type: string
+          example: Test
+
+        password:
+          type: string
+          example: 123456
+
+    user:
+      type: object
+
+      properties:
+        id:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        email:
+          type: string
+          example: Test@Test.ru
+   
+    film:
+      type: object
+      
+      properties:
+        title:
+          type: Aviator
+          example: title
+
+        description:
+          type: string
+          example: Aviator descr
+
+        releasedDate:
+          type: Date
+          example: '2021-01-11T10:00:00.333Z'
+
+        publicationDate:
+          type: string
+          example: '2021'
+
+        genre:
+          type: GenreType
+          example: Comedy
+
+        rating:
+          type: number
+          example: 6.6
+
+        previewVideoLink:
+          type: string
+          example: https://10.react.pages.academy/static/film/video/traffic.mp4
+
+        videoLink:
+          type: string
+          example: https://10.react.pages.academy/static/film/video/traffic.mp4
+
+        director:
+          type: string
+          example: Jemaine Clement
+
+        starrings:
+          type: string[]
+          example: '[John Malkovich,Natalie Imbruglia]'
+
+        runTime:
+          type: string
+          example: 120
+
+        scoresCounts:
+          type: number
+          example: 8
+
+        userId:
+          type: string
+          example: 1
+
+        posterImage:
+          type: string
+          example: 'https://10.react.pages.academy/static/film/poster/Aviator4.jpg'
+
+        backgroundImage:
+          type: string
+          example: https://10.react.pages.academy/static/film/background/matrix1.jpg
+
+        backgroundColor:
+          type: string
+          example: '#FDFDFC'               
