@@ -13,8 +13,8 @@ export default class CreateFilmDto {
   public starrings!: string[];
   public runTime!: number;
   public scoresCounts!: number;
-  public userId!: string;
   public posterImage!: string;
   public backgroundImage!: string;
   public backgroundColor!: string;
+  public userId!: string;
 }

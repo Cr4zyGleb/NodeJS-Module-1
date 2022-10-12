@@ -1,4 +1,4 @@
-import { User } from './user.type';
+import { User } from './user.type.js';
 
 export type MockData = {
   names: string[];

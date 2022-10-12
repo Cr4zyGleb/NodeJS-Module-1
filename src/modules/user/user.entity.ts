@@ -1,4 +1,4 @@
-import { User } from '../../types/user.type';
+import { User } from '../../types/user.type.js';
 import typegoose, {getModelForClass, defaultClasses} from '@typegoose/typegoose';
 import { createSHA256 } from '../../utils/common.js';
 

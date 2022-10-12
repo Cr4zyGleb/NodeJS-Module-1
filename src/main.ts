@@ -10,6 +10,13 @@ import DatabaseService from './common/database-client/database.service.js';
 import {DatabaseInterface} from './common/database-client/database.interface.js';
 import UserService from './modules/user/user.service.js';
 import {UserServiceInterface} from './modules/user/user-service.interface.js';
+import { FilmServiceInterface } from './modules/film/film-service.interface.js';
+import FilmService from './modules/film/film.service.js';
+import { FilmEntity, FilmModel } from './modules/film/film.entity.js';
+import { types } from '@typegoose/typegoose';
+import { CommentServiceInterface } from './modules/comment/comment-service.interface.js';
+import { CommentEntity, CommentModel } from './modules/comment/comment.entity.js';
+import CommentService from './modules/comment/comment.service.js';
 
 const applicationContainer = new Container();
 applicationContainer.bind<Application>(Component.Application).to(Application).inSingletonScope();
@@ -17,6 +24,9 @@ applicationContainer.bind<LoggerInterface>(Component.LoggerInterface).to(LoggerS
 applicationContainer.bind<ConfigInterface>(Component.ConfigInterface).to(ConfigService).inSingletonScope();
 applicationContainer.bind<DatabaseInterface>(Component.DatabaseInterface).to(DatabaseService).inSingletonScope();
 applicationContainer.bind<UserServiceInterface>(Component.UserServiceInterface).to(UserService);
-
+applicationContainer.bind<FilmServiceInterface>(Component.FilmServiceInterface).to(FilmService);
+applicationContainer.bind<types.ModelType<FilmEntity>>(Component.FilmModel).toConstantValue(FilmModel);
+applicationContainer.bind<CommentServiceInterface>(Component.CommentServiceInterface).to(CommentService).inSingletonScope();
+applicationContainer.bind<types.ModelType<CommentEntity>>(Component.CommentModel).toConstantValue(CommentModel);
 const application = applicationContainer.get<Application>(Component.Application);
 await application.init();

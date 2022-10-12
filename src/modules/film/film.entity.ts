@@ -14,10 +14,21 @@ export interface FilmEntity extends defaultClasses.Base {}
   }
 })
 export class FilmEntity extends defaultClasses.TimeStamps {
-  @prop({required: true, trim: true, minlength : 0, maxlength : 100})
+
+  @prop({
+    required:true,
+    default: '',
+    minLength: [2, 'Title min length is 2!'],
+    maxLength: [100, 'Title max length is 100!'],
+  })
   public title!: string;
 
-  @prop({required: true, trim: true, minlength : 0, maxlength : 1024})
+  @prop({
+    required:true,
+    default: '',
+    minLength: [20, 'Description min length is 20!'],
+    maxLength: [1024, 'Description max length is 1042!'],
+  })
   public description!: string;
 
   @prop({required: true, default : dayjs(new (Date), 'YYYY-MM-DD')})

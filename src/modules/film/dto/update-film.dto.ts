@@ -16,4 +16,5 @@ export default class UpdateFilmDto {
   public posterImage!: string;
   public backgroundImage!: string;
   public backgroundColor!: string;
+  public filmId!: string;
 }
