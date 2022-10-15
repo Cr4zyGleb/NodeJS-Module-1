@@ -1,5 +1,5 @@
 import { GenreType } from './genre-type.enum';
-import { User } from './user.type';
+import { User } from './user.type.js';
 
 export type Film = {
   title: string;

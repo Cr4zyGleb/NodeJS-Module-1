@@ -1,24 +1,23 @@
-import { Comment } from '../../types/Comment.type';
-import typegoose, {getModelForClass, defaultClasses} from '@typegoose/typegoose';
-import { User } from '../../types/user.type';
+import typegoose, {getModelForClass, defaultClasses, Ref} from '@typegoose/typegoose';
+import { FilmEntity } from '../film/film.entity.js';
+import { UserEntity } from '../user/user.entity.js';
 
 const {prop} = typegoose;
 
-export interface UserEntity extends defaultClasses.Base {}
+export interface CommentEntity extends defaultClasses.Base {}
 
-export class CommentEntity extends defaultClasses.TimeStamps implements Comment {
+export class CommentEntity extends defaultClasses.TimeStamps {
 
-  constructor(data: Comment) {
-    super();
+  @prop({
+    ref: FilmEntity,
+    required: true})
+  public filmId!: Ref<FilmEntity>;
 
-    this.text = data.text;
-    this.rating = data.rating;
-    this.date = data.date;
-    this.userId = data.userId;
-  }
-
-  @prop({required: true})
-  public userId!: User;
+  @prop({
+    ref: UserEntity,
+    required: true
+  })
+  public userId!: Ref<UserEntity>;
 
   @prop({required: true, minlength : 5, maxlength : 50})
   public text!: string;
