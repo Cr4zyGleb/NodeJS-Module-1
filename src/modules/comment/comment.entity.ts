@@ -2,9 +2,15 @@ import typegoose, {getModelForClass, defaultClasses, Ref} from '@typegoose/typeg
 import { FilmEntity } from '../film/film.entity.js';
 import { UserEntity } from '../user/user.entity.js';
 
-const {prop} = typegoose;
+const { prop, modelOptions } = typegoose;
 
 export interface CommentEntity extends defaultClasses.Base {}
+
+@modelOptions({
+  schemaOptions: {
+    collection: 'comments'
+  }
+})
 
 export class CommentEntity extends defaultClasses.TimeStamps {
 
