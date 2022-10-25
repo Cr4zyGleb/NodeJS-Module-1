@@ -17,22 +17,30 @@ export default class CommentService implements CommentServiceInterface {
   ) {}
 
   public async create(filmId: string, dto: CreateCommentDto): Promise<DocumentType<CommentEntity>> {
-    const commentWithId = {
+
+    const structureForCreateComment = {
       ...dto,
       filmId
     };
-    const result = await this.commentModel.create(commentWithId);
-    this.logger.info('New comment created!');
 
-    return result;
+    const comment = await this.commentModel.create(structureForCreateComment);
+
+    return comment.populate('userId');
   }
 
-  public async find(filmId: string): Promise<DocumentType<CommentEntity>[]> {
+  public async findByFilmId(filmId: string): Promise<DocumentType<CommentEntity>[]> {
     return this.commentModel
-      .find({filmId: filmId})
+      .find({filmId})
       .limit(DEFAULT_COMMENT_COUNT)
-      .sort({date: -1})
+      .populate('userId');
+  }
+
+  public async deleteByFilmId(filmId: string): Promise<number> {
+    const result = await this.commentModel
+      .deleteMany({filmId})
       .exec();
+    this.logger.info('comment deleted');
+    return result.deletedCount;
   }
 
 }
