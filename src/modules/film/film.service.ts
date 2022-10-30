@@ -25,6 +25,7 @@ export default class FilmService implements FilmServiceInterface {
   }
 
   public async updateById(filmId: string, dto: UpdateFilmDto): Promise<DocumentType<FilmEntity> | null> {
+    this.logger.info(`updateById ${filmId}`);
     return this.filmModel
       .findByIdAndUpdate(filmId, dto, {new: true})
       .populate(['userId'])
@@ -37,7 +38,7 @@ export default class FilmService implements FilmServiceInterface {
       .exec();
   }
 
-  public async find(limit?: number): Promise<DocumentType<FilmEntity>[]> {
+  public async index(limit?: number): Promise<DocumentType<FilmEntity>[]> {
     const parsedLimit = limit && limit > 0 ? limit : DEFAULT_FILM_COUNT;
     return this.filmModel
       .aggregate([
@@ -73,7 +74,7 @@ export default class FilmService implements FilmServiceInterface {
   }
 
   public async findByGenre(genre: keyof typeof GenreType, limit?: number): Promise<DocumentType<FilmEntity>[]> {
-    const result = await this.find(limit);
+    const result = await this.index(limit);
 
     return result.filter((elem) => elem.genre === genre);
   }
@@ -112,8 +113,8 @@ export default class FilmService implements FilmServiceInterface {
       ]).exec())[0];
   }
 
-  public async findPromo(): Promise<DocumentType<FilmEntity> | null> {
-    const result = await this.find();
+  public async getPromo(): Promise<DocumentType<FilmEntity> | null> {
+    const result = await this.index();
 
     return result[0];
   }
