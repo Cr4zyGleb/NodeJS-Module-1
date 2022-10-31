@@ -42,6 +42,7 @@ Content-Type: application/json
 ## Создать фильм
 POST http://localhost:4000/films HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ItCf0YDQuNCy0LXRgkDQv9GA0LjQstC10YIucnUiLCJpZCI6IjYzNTU4NmNhODhmNjMxM2Y1MGFlYjEwMCIsImlhdCI6MTY2NzE3NzY2OSwiZXhwIjoxNjY3MzUwNDY5fQ.-mIGdzce09aWTv31sAhcjqRrW1k-fF6OqGXilIDWhxc
 
 {
   "title": "aviator",
@@ -84,6 +85,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ItCf0YDQuNCy0LXRgkDQv9GA0
 ## create film1
 POST http://localhost:4000/films HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ItCf0YDQuNCy0LXRgkDQv9GA0LjQstC10YIucnUiLCJpZCI6IjYzNTU4NmNhODhmNjMxM2Y1MGFlYjEwMCIsImlhdCI6MTY2NzE3NzY2OSwiZXhwIjoxNjY3MzUwNDY5fQ.-mIGdzce09aWTv31sAhcjqRrW1k-fF6OqGXilIDWhxc
 
 {
   "title": "film1",
@@ -106,6 +108,7 @@ Content-Type: application/json
 ## create film2
 POST http://localhost:4000/films HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ItCf0YDQuNCy0LXRgkDQv9GA0LjQstC10YIucnUiLCJpZCI6IjYzNTU4NmNhODhmNjMxM2Y1MGFlYjEwMCIsImlhdCI6MTY2NzE3NzY2OSwiZXhwIjoxNjY3MzUwNDY5fQ.-mIGdzce09aWTv31sAhcjqRrW1k-fF6OqGXilIDWhxc
 
 {
   "title": "film2",
@@ -171,12 +174,13 @@ GET http://localhost:4000/films/promo HTTP/1.1
 ###
 ## getFavorite
 GET http://localhost:4000/films/favorite HTTP/1.1
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ItCf0YDQuNCy0LXRgkDQv9GA0LjQstC10YIucnUiLCJpZCI6IjYzNTU4NmNhODhmNjMxM2Y1MGFlYjEwMCIsImlhdCI6MTY2NzE3NzY2OSwiZXhwIjoxNjY3MzUwNDY5fQ.-mIGdzce09aWTv31sAhcjqRrW1k-fF6OqGXilIDWhxc
 
 ###
 ## setFavorite
-POST http://localhost:4000/films/favorite/1 HTTP/1.1
+POST http://localhost:4000/films/favorite/635d6afd8f3454825ab4fbce/1 HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ItCf0YDQuNCy0LXRgkDQv9GA0LjQstC10YIucnUiLCJpZCI6IjYzNTU4NmNhODhmNjMxM2Y1MGFlYjEwMCIsImlhdCI6MTY2NzE3NzY2OSwiZXhwIjoxNjY3MzUwNDY5fQ.-mIGdzce09aWTv31sAhcjqRrW1k-fF6OqGXilIDWhxc
 
 ###
 ## Отправка аватарки пользователю

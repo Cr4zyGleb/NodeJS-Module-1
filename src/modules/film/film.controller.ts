@@ -76,8 +76,7 @@ export default class FilmController extends Controller {
       method: HttpMethod.Get,
       handler: this.getFavorite,
       middlewares: [
-        new PrivateRouteMiddleware(),
-        new DocumentExistsMiddleware(this.filmService, 'film', 'filmId')
+        new PrivateRouteMiddleware()
       ]
     });
     this.addRoute({
