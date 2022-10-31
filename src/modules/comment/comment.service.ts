@@ -24,8 +24,6 @@ export default class CommentService implements CommentServiceInterface {
   }
 
   public async index(filmId: string): Promise<DocumentType<CommentEntity>[]> {
-    this.logger.info('comments find');
-    this.logger.info(filmId);
     return this.commentModel
       .find({filmId})
       .limit(DEFAULT_COMMENT_COUNT)

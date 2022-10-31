@@ -15,6 +15,7 @@ import { FilmServiceInterface } from '../film/film-service.interface.js';
 import { ValidateObjectIdMiddleware } from '../../common/middlewares/validate-objectid.middleware.js';
 import { ValidateDtoMiddleware } from '../../common/middlewares/validate-dto.middleware.js';
 import {DocumentExistsMiddleware} from '../../common/middlewares/document-exists.middleware.js';
+import { PrivateRouteMiddleware } from '../../common/middlewares/private-route.middleware.js';
 
 type ParamsGetComments = {
   filmId: string;
@@ -37,12 +38,13 @@ export default class CommentController extends Controller {
       middlewares: [new ValidateObjectIdMiddleware('filmId')]
     });
     this.addRoute({
-      path: '/',
+      path: '/:filmId',
       method: HttpMethod.Post,
       handler: this.create,
       middlewares: [
         new ValidateDtoMiddleware(CreateCommentDto),
-        new DocumentExistsMiddleware(this.filmService, 'film', 'filmId')
+        new DocumentExistsMiddleware(this.filmService, 'film', 'filmId'),
+        new PrivateRouteMiddleware()
       ]
     });
   }
@@ -56,7 +58,7 @@ export default class CommentController extends Controller {
     if (!comments.length) {
       throw new HttpError(
         StatusCodes.NOT_FOUND,
-        `Offer with id ${filmId} not found.`,
+        `Film with id ${filmId} not found.`,
         'CommentController'
       );
     }
@@ -69,8 +71,7 @@ export default class CommentController extends Controller {
     res: Response
   ): Promise<void> {
     const {body} = req;
-
-    const comment = await this.commentService.create(body);
+    const comment = await this.commentService.create({...body, userId: req.user.id});
     await this.filmService.incCommentCount(body.filmId);
 
     this.logger.info('new comment created');

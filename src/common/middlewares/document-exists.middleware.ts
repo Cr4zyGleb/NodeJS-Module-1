@@ -24,3 +24,4 @@ export class DocumentExistsMiddleware implements MiddlewareInterface {
     next();
   }
 }
+

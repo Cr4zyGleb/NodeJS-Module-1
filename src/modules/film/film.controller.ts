@@ -15,6 +15,7 @@ import UpdateFilmDto from './dto/update-film.dto.js';
 import { ValidateObjectIdMiddleware } from '../../common/middlewares/validate-objectid.middleware.js';
 import { ValidateDtoMiddleware } from '../../common/middlewares/validate-dto.middleware.js';
 import { DocumentExistsMiddleware } from '../../common/middlewares/document-exists.middleware.js';
+import { PrivateRouteMiddleware } from '../../common/middlewares/private-route.middleware.js';
 
 const limitFilmsByGenre = 60;
 const limitFavoriteFilms = 60;
@@ -34,12 +35,17 @@ export default class FilmController extends Controller {
       path: '/',
       method: HttpMethod.Post,
       handler: this.create,
-      middlewares: [new ValidateDtoMiddleware(CreateFilmDto)] });
+      middlewares: [
+        new PrivateRouteMiddleware(),
+        new ValidateDtoMiddleware(CreateFilmDto),
+      ]
+    });
     this.addRoute({
       path: '/:filmId',
       method: HttpMethod.Patch,
       handler: this.updateById,
       middlewares: [
+        new PrivateRouteMiddleware(),
         new ValidateObjectIdMiddleware('filmId'),
         new ValidateDtoMiddleware(UpdateFilmDto),
         new DocumentExistsMiddleware(this.filmService, 'film', 'filmId')
@@ -51,6 +57,7 @@ export default class FilmController extends Controller {
       handler: this.deteleById,
       middlewares: [
         new ValidateObjectIdMiddleware('filmId'),
+        new PrivateRouteMiddleware(),
         new DocumentExistsMiddleware(this.filmService, 'film', 'filmId')
       ]
     });
@@ -67,13 +74,18 @@ export default class FilmController extends Controller {
     this.addRoute({
       path: '/favorite',
       method: HttpMethod.Get,
-      handler: this.getFavorite
+      handler: this.getFavorite,
+      middlewares: [
+        new PrivateRouteMiddleware(),
+        new DocumentExistsMiddleware(this.filmService, 'film', 'filmId')
+      ]
     });
     this.addRoute({
       path: '/favorite/:filmId/:status',
       method: HttpMethod.Post,
       handler: this.setFavorite,
       middlewares: [
+        new PrivateRouteMiddleware(),
         new DocumentExistsMiddleware(this.filmService, 'film', 'filmId')
       ]
     });
@@ -102,8 +114,7 @@ export default class FilmController extends Controller {
     { body, params }: Request<core.ParamsDictionary, Record<string, unknown>, UpdateFilmDto>,
     res: Response
   ): Promise<void> {
-    this.logger.info(params.filmId);
-    this.logger.info(body.title);
+
     const updatedFilm = await this.filmService.updateById(params.filmId, body);
 
     const result = await this.filmService.findById(updatedFilm?.id);
@@ -147,7 +158,6 @@ export default class FilmController extends Controller {
   }
 
   public async getPromo(_req: Request, res: Response): Promise<void> {
-    this.logger.info('getPromo');
     const promoFilm = await this.filmService.getPromo();
     this.ok(res, fillDTO(FilmResponse, promoFilm));
   }

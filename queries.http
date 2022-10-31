@@ -60,33 +60,20 @@ Content-Type: application/json
   "userId": "634dd49615778ef82fb5e7b2"
 }
 
-###
-## Создадим пользователя
-POST http://localhost:4000/users/register HTTP/1.1
-Content-Type: application/json
-
-{
-
-  "userName" : "Привет",
-  "avatar" : "Привет.jpg",
-  "email" : "Привет@привет.ru",
-  "password" : "123"
-}
-
 
 ###
 ## Объявление по идентификатору
-GET http://localhost:4000/comments/634dd49615778ef82fb5e7b4 HTTP/1.1
+GET http://localhost:4000/comments/635d71f474077314a4fb4a2f HTTP/1.1
 
 
 ###
-## Создание объявления
-POST http://localhost:4000/comments HTTP/1.1
+## Создание комментария
+POST http://localhost:4000/comments/635d71f474077314a4fb4a2f HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ItCf0YDQuNCy0LXRgkDQv9GA0LjQstC10YIucnUiLCJpZCI6IjYzNTU4NmNhODhmNjMxM2Y1MGFlYjEwMCIsImlhdCI6MTY2NzE3NzY2OSwiZXhwIjoxNjY3MzUwNDY5fQ.-mIGdzce09aWTv31sAhcjqRrW1k-fF6OqGXilIDWhxc
 
 {
-  "filmId": "634dd49615778ef82fb5e7b4",
-  "userId": "634dd30c829758d134ae6670",
+  "filmId": "635d71f474077314a4fb4a2f",
   "text": "Привет. Фильм норм. Нравицца",
   "date": "2022-01-01",
   "rating": 5
@@ -202,3 +189,34 @@ Content-Type: image/png
 
 < D:/HTMLAcademy/avatar.jpg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+###
+## Создадим пользователя
+POST http://localhost:4000/users/register HTTP/1.1
+Content-Type: application/json
+
+{
+
+  "userName" : "Привет",
+  "avatar" : "Привет.jpg",
+  "email" : "Привет@привет.ru",
+  "password" : "123456"
+}
+
+###
+## login
+POST http://localhost:4000/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email" : "Привет@привет.ru",
+  "password" : "123"  
+}
+
+
+###
+
+## Проверка токена пользователя
+GET http://localhost:4000/users/login HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ItCf0YDQuNCy0LXRgkDQv9GA0LjQstC10YIucnUiLCJpZCI6IjYzNTU4NmNhODhmNjMxM2Y1MGFlYjEwMCIsImlhdCI6MTY2NzE3NzY2OSwiZXhwIjoxNjY3MzUwNDY5fQ.-mIGdzce09aWTv31sAhcjqRrW1k-fF6OqGXilIDWhxc
